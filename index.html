@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript Tasks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+      padding: 20px;
+    }
+    .result-box {
+      background-color: #fff;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 700px;
+    }
+    h3 {
+      color: #007acc;
+      margin-bottom: 15px;
+    }
+    input {
+      padding: 5px;
+      margin: 5px 0;
+      width: 100%;
+    }
+    button {
+      padding: 8px 16px;
+      background-color: #007acc;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005b99;
+    }
+    .output {
+      margin-top: 10px;
+      background-color: #eef6fb;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. Basic Info Form -->
+  <div class="result-box">
+    <h3>1. Show Form Data Below the Form</h3>
+    <form id="infoForm">
+      <label>Name:</label>
+      <input type="text" id="name" />
+      <label>Email:</label>
+      <input type="text" id="email" />
+      <label>Phone:</label>
+      <input type="text" id="phone" />
+      <button type="button" onclick="showFormData()">Submit</button>
+    </form>
+    <div class="output" id="formOutput"></div>
+  </div>
+
+  <!-- 2. Change Image on Button Click -->
+  <div class="result-box">
+    <h3>2. Change Image on Button Click</h3>
+    <img id="myimage" src="contact.jpg" width="150" />
+    <br/>
+    <button onclick="changeImage()">Change Image</button>
+  </div>
+
+  <!-- 3. Increase / Decrease Font Size -->
+  <div class="result-box">
+    <h3>3. Increase and Decrease Font Size</h3>
+    <p id="text" style="font-size: 18px;">This is sample text.</p>
+    <button onclick="increaseFont()">A+</button>
+    <button onclick="decreaseFont()">A-</button>
+  </div>
+
+  <!-- 4. Show Date & Time -->
+  <div class="result-box">
+    <h3>4. Show Current Date and Time</h3>
+    <button onclick="showDateTime()">Show Date & Time</button>
+    <div class="output" id="dateTimeBox"></div>
+  </div>
+
+  <script>
+    // Task 1 - Show form data
+    function showFormData() {
+      let name = document.getElementById("name").value;
+      let email = document.getElementById("email").value;
+      let phone = document.getElementById("phone").value;
+      let output = `
+        <strong>Name:</strong> ${name} <br>
+        <strong>Email:</strong> ${email} <br>
+        <strong>Phone:</strong> ${phone}
+      `;
+      document.getElementById("formOutput").innerHTML = output;
+    }
+
+    // Task 2 - Change image (toggle between two images)
+    function changeImage() {
+      let img = document.getElementById("myimage");
+      if (img.src.includes("contact.jpg")) {
+        img.src = "about.jpg";
+      } else {
+        img.src = "contact.jpg";
+      }
+    }
+
+    // Task 3 - Font size control
+    function increaseFont() {
+      let p = document.getElementById("text");
+      let size = window.getComputedStyle(p).fontSize;
+      p.style.fontSize = (parseInt(size) + 2) + "px";
+    }
+
+    function decreaseFont() {
+      let p = document.getElementById("text");
+      let size = window.getComputedStyle(p).fontSize;
+      p.style.fontSize = (parseInt(size) - 2) + "px";
+    }
+
+    // Task 4 - Show date & time
+    function showDateTime() {
+      let now = new Date();
+      document.getElementById("dateTimeBox").innerHTML = now.toString();
+    }
+  </script>
+</body>
+</html>
